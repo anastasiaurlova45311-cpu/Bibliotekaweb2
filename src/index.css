@@ -1,152 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 @import "tailwindcss";
 
-/* === LIGHT THEME (default) === */
 :root {
-  --bg: #f5f0eb;
-  --bg-soft: #ede7e0;
+  font-size: 36px;
+  --bg: #f5f1ea;
+  --bg-soft: #ebe4d6;
   --card: #ffffff;
-  --text: #2c2c2c;
-  --text-soft: #6b6b6b;
-  --heading: #1a1a2e;
-  --primary: #5b8c6e;
-  --primary-dark: #3d6b4e;
-  --border: #d4cdc5;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --text: #2d2a26;
+  --text-soft: #6b645a;
+  --primary: #b85c38;
+  --primary-dark: #8f4428;
+  --heading: #6b21a8;
   --accent-green: #4a7c59;
   --accent-blue: #3d6cb9;
   --accent-purple: #7b5ea7;
+  --border: #d9cfbd;
+  --shadow: 0 4px 20px rgba(45, 42, 38, 0.08);
+  --shadow-hover: 0 8px 30px rgba(45, 42, 38, 0.15);
   --danger: #c0392b;
 }
 
-/* === DARK THEME === */
 body.dark {
-  --bg: #1a1a2e;
-  --bg-soft: #252540;
-  --card: #2a2a45;
-  --text: #e8e8e8;
-  --text-soft: #a0a0b0;
-  --heading: #f0f0f0;
-  --primary: #6ab07f;
-  --primary-dark: #8ecfa0;
-  --border: #3d3d5c;
+  --bg: #1a1612;
+  --bg-soft: #262018;
+  --card: #2d261e;
+  --text: #f0e8d8;
+  --text-soft: #a89e8c;
+  --primary: #e08a5e;
+  --primary-dark: #f0a67a;
+  --heading: #c4b5fd;
+  --accent-green: #7cb892;
+  --accent-blue: #6b9bd1;
+  --accent-purple: #a88fd1;
+  --border: #3d352a;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.5);
-  --accent-green: #6ab07f;
-  --accent-blue: #6b9bd1;
-  --accent-purple: #a78bca;
-  --danger: #e74c3c;
 }
 
-/* === BASE === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
+  font-family: 'Marck Script', 'Georgia', 'Segoe UI', serif;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
   min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+  word-spacing: 0.25em;
+  letter-spacing: 0.05em;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(184, 92, 56, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(74, 124, 89, 0.05) 0%, transparent 50%);
 }
 
-/* === ANIMATIONS === */
+button, input, select, textarea, span, p, h1, h2, h3, h4, label {
+  font-family: inherit;
+  word-spacing: 0.3em;
+  letter-spacing: 0.05em;
+}
+
+button {
+  white-space: nowrap;
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(40px); }
+  from { opacity: 0; transform: translateX(30px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.3s ease forwards;
+  animation: fadeIn 0.4s ease;
 }
 
 .animate-slide-up {
-  animation: slideUp 0.3s ease forwards;
+  animation: slideUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.3s ease forwards;
+  animation: slideInRight 0.3s;
 }
 
-/* === SCROLLBAR === */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-soft);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
-}
-
-/* === RANGE SLIDER === */
+/* Page slider */
 .page-slider {
+  width: 100%;
+  height: 4px;
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
-  height: 6px;
-  border-radius: 3px;
   background: var(--bg-soft);
+  border-radius: 4px;
   outline: none;
-  margin-top: 4px;
+  cursor: pointer;
 }
 
 .page-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  width: 14px;
+  height: 14px;
   background: var(--accent-blue);
+  border-radius: 50%;
   cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .page-slider::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  width: 14px;
+  height: 14px;
   background: var(--accent-blue);
+  border-radius: 50%;
   cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* === SELECT === */
-select {
-  cursor: pointer;
-}
-
-select option {
-  background: var(--card);
-  color: var(--text);
-}
-
-/* === FOCUS VISIBLE === */
-*:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 600px) {
-  .page-slider::-webkit-slider-thumb {
-    width: 22px;
-    height: 22px;
-  }
+  border: none;
 }
