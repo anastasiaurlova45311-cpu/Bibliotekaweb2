@@ -1,1 +1,152 @@
 @import "tailwindcss";
+
+/* === LIGHT THEME (default) === */
+:root {
+  --bg: #f5f0eb;
+  --bg-soft: #ede7e0;
+  --card: #ffffff;
+  --text: #2c2c2c;
+  --text-soft: #6b6b6b;
+  --heading: #1a1a2e;
+  --primary: #5b8c6e;
+  --primary-dark: #3d6b4e;
+  --border: #d4cdc5;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --accent-green: #4a7c59;
+  --accent-blue: #3d6cb9;
+  --accent-purple: #7b5ea7;
+  --danger: #c0392b;
+}
+
+/* === DARK THEME === */
+body.dark {
+  --bg: #1a1a2e;
+  --bg-soft: #252540;
+  --card: #2a2a45;
+  --text: #e8e8e8;
+  --text-soft: #a0a0b0;
+  --heading: #f0f0f0;
+  --primary: #6ab07f;
+  --primary-dark: #8ecfa0;
+  --border: #3d3d5c;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --accent-green: #6ab07f;
+  --accent-blue: #6b9bd1;
+  --accent-purple: #a78bca;
+  --danger: #e74c3c;
+}
+
+/* === BASE === */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* === RANGE SLIDER === */
+.page-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-soft);
+  outline: none;
+  margin-top: 4px;
+}
+
+.page-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.page-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* === SELECT === */
+select {
+  cursor: pointer;
+}
+
+select option {
+  background: var(--card);
+  color: var(--text);
+}
+
+/* === FOCUS VISIBLE === */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .page-slider::-webkit-slider-thumb {
+    width: 22px;
+    height: 22px;
+  }
+}
